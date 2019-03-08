@@ -1,0 +1,16 @@
+---
+title: "README"
+author: "Bret Zeldow"
+date: "3/8/2019"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+
+This folder holds all the simulation code in the semi-BART paper. Code for semi-BART is available at https://www.github.com/zeldow/semibart. The code for simulations is organized by table number in the manuscript.
+
+Note: there is a bunch of commented out code that are remnants of simulations past.
