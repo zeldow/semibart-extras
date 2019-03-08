@@ -1,0 +1,28 @@
+---
+title: "README"
+author: "Bret Zeldow"
+date: "3/8/2019"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+
+This folder houses some ancillary simulations we did to assess bias in models that are part-tree, part-linear, such as semi-BART. These simulations were done to help with our understanding and are not comprehensive or conclusive.
+
+## Setup
+
+We simulate one covariate $x$ which is iid standard normal. Independently, we simulate a binary treatment $a$ from iid Bernoulli(0.5). The outcome is generated with a normal error term with mean in the form of $\mu(a, x) = \psi_1 a + \psi_2 a x + \varpi(x)$ where $\varpi(x)$ is a regression tree dependent only on $x$.
+
+These simulations use three structures for $\varpi(x)$:
+
+* Very basic tree (one split point): tree_simplest.R
+* Basic tree (two split points): tree_simple.R
+* Complicated tree (many split points): tree_complex.R
+
+## Estimation
+
+Estimation is ad hoc and not intended to be representative of a real data analysis. We use a backfitting algorithm to estimate the tree part and the linear part. The model is correctly specified. Basically we estimate a tree and get estimates. We get residuals by subtracting off the fit of the tree, then we estimate the linear part. We then subtract off the linear fit and estimate the tree again, continuing this process until convergence.
